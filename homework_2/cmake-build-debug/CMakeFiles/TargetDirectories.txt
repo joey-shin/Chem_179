@@ -1,0 +1,3 @@
+/Users/joey/Desktop/Chem_179/homework_2/cmake-build-debug/CMakeFiles/homework_2.dir
+/Users/joey/Desktop/Chem_179/homework_2/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/joey/Desktop/Chem_179/homework_2/cmake-build-debug/CMakeFiles/rebuild_cache.dir
