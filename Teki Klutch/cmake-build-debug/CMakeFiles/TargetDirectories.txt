@@ -1,3 +1,0 @@
-/Users/joey/Desktop/Chem_179/Teki Klutch/cmake-build-debug/CMakeFiles/Teki_Klutch.dir
-/Users/joey/Desktop/Chem_179/Teki Klutch/cmake-build-debug/CMakeFiles/edit_cache.dir
-/Users/joey/Desktop/Chem_179/Teki Klutch/cmake-build-debug/CMakeFiles/rebuild_cache.dir
