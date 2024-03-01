@@ -83,6 +83,8 @@ double STO3G_overlap(STO3G A, STO3G B){
     return overlap;
 }
 
+
+//construct overlap matrix
 void overlap_matrix(mat& S, vector<STO3G>& basis){
     for(int i = 0; i < basis.size(); i++){
         for(int j = 0; j < basis.size(); j++){
@@ -92,6 +94,7 @@ void overlap_matrix(mat& S, vector<STO3G>& basis){
 }
 
 
+//returns diagonals of the hamiltonian matrix
 double return_hamiltonian(STO3G basis){
     double h_H1s = -13.6;
     double h_C2s = -21.4;
@@ -110,6 +113,7 @@ double return_hamiltonian(STO3G basis){
 }
 
 
+//construct hamiltonian matrix
 void hamiltonian_matrix(mat& H, const mat& S, vector<STO3G>& basis){
     double K = 1.75;
 
@@ -126,6 +130,7 @@ void hamiltonian_matrix(mat& H, const mat& S, vector<STO3G>& basis){
 }
 
 
+//construct orthogonalizing matrix
 void orthogonalization_matrix(mat& X, mat& S){
     mat S_evec, S_eval_inv_sqrt;
     vec S_eval;
@@ -136,7 +141,7 @@ void orthogonalization_matrix(mat& X, mat& S){
 }
 
 
-
+//construct coefficient matrix and total molecule energy
 void coefficient_matrix_energy(mat& H, mat& X, mat& C, double& E, int& n){
     //form Hamltonian in orthogonal basis
     mat H_ortho = X.t() * H * X;

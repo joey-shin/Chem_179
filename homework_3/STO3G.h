@@ -15,9 +15,6 @@ struct STO3G{
     int atomic_number;
 };
 
-
 void construct_basis(vector<STO3G>& basis, const string& H_STO3G_file, const string& C_STO3G_file, const string& mol_file, int& n);
-
-//void number_of_electron_pairs(vector<STO3G>& basis, int n);
 
 #endif //HOMEWORK_3_BASIS_H

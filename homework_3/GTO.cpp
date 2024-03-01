@@ -34,6 +34,7 @@ void read_STO3G(vector<GTO>& primitive, const int& atomic_number, const int& tot
 
     string line, temp;
 
+    //sets contraction coefficients of each GTO
     if(atomic_number == 1){
         for(int i = 0; i < 3; i++){
             getline(in_H_STO3G, line);
@@ -58,7 +59,7 @@ void read_STO3G(vector<GTO>& primitive, const int& atomic_number, const int& tot
 }
 
 
-
+//sets normalization constant N of each GTO
 void normalize_GTO(vector<GTO>& primitive, vector<int>& L, vector<double>& coord){
     double overlap;
     for(int i = 0; i < 3; i ++){

@@ -42,7 +42,7 @@ void construct_basis(vector<STO3G>& basis, const string& H_STO3G_file, const str
     in_mol.open(mol_file, ios::in); //opening file + catch errors
     if(!in_mol.is_open()){
         throw runtime_error(mol_file + " didn't open!");
-    } 
+    }
 
     string line;
     int number_of_atoms, charge, atomic_number, total_L;
@@ -122,8 +122,10 @@ void construct_basis(vector<STO3G>& basis, const string& H_STO3G_file, const str
         }
     }
 
+    //calculate number of electron pairs
     n = ((4 * a) + b) / 2;
 
+    //catch if n is not an integer
     if(floor(n) != n){
         throw runtime_error("number of electrons not a whole number");
     }

@@ -5,15 +5,18 @@
 #include "STO3G.h"
 #include "eval.h"
 
-//console input structure: ./[executable file] basis/H_STO3G.txt basis/C_STO3G.txt sample_input/[molecule].txt
 int main(int argc, char* argv[]) {
 
     vector<STO3G> basis;
     int n = 0; //number of electron pairs
 
     //constructs basis
+    //argv[1]: basis/H_STO3G.txt
+    //argv[2]: basis/C_STO3G.txt
+    //argv[3]: sample_input/[molecule].txt
     construct_basis(basis, argv[1], argv[2], argv[3], n);
 
+    //basis information output
     cout << "number of basis: " << basis.size() << endl;
     cout << "number of electrons pairs: " << n << '\n' << endl;
 
@@ -37,27 +40,28 @@ int main(int argc, char* argv[]) {
         cout << '\n' << '\n' << endl;
     }
 
-
+    //construct overlap matrix
     mat S(basis.size(), basis.size());
     overlap_matrix(S, basis);
 
     cout << "Overlap Matrix: " << endl;
     cout << S << endl;
 
-
+    //construct hamiltonian matrix
     mat H(basis.size(), basis.size());
     hamiltonian_matrix(H, S, basis);
 
     cout << "Hamiltonian Matrix: " << endl;
     cout << H << endl;
 
-
+    //construct orthogonalizing matrix
     mat X(basis.size(), basis.size());
     orthogonalization_matrix(X, S);
 
     cout << "Orthogonalization Matrix: " << endl;
     cout << X << endl;
 
+    //construct coefficient matrix and calculate energy
     mat C(basis.size(), basis.size());
     double E = 0.0;
     coefficient_matrix_energy(H, X, C, E, n);
