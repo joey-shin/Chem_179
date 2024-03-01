@@ -1,0 +1,202 @@
+number of basis: 10
+number of electrons pairs: 5
+
+
+atomic number: 1
+basis [0] GTO [0] exp: 3.42525
+basis [0] GTO [0] contract coeff: 0.154329
+basis [0] GTO [0] normalization constant: 1.79444
+basis [0] GTO [1] exp: 0.623914
+basis [0] GTO [1] contract coeff: 0.535328
+basis [0] GTO [1] normalization constant: 0.500326
+basis [0] GTO [2] exp: 0.168855
+basis [0] GTO [2] contract coeff: 0.444635
+basis [0] GTO [2] normalization constant: 0.187735
+L: 0 0 0 
+Coord: 0 0 0 
+
+
+
+atomic number: 6
+basis [1] GTO [0] exp: 2.94125
+basis [1] GTO [0] contract coeff: -0.0999672
+basis [1] GTO [0] normalization constant: 1.6007
+basis [1] GTO [1] exp: 0.683483
+basis [1] GTO [1] contract coeff: 0.399513
+basis [1] GTO [1] normalization constant: 0.535742
+basis [1] GTO [2] exp: 0.22229
+basis [1] GTO [2] contract coeff: 0.700115
+basis [1] GTO [2] normalization constant: 0.230728
+L: 0 0 0 
+Coord: 2.0787 0 0 
+
+
+
+atomic number: 6
+basis [2] GTO [0] exp: 2.94125
+basis [2] GTO [0] contract coeff: 0.155916
+basis [2] GTO [0] normalization constant: 5.49041
+basis [2] GTO [1] exp: 0.683483
+basis [2] GTO [1] contract coeff: 0.607684
+basis [2] GTO [1] normalization constant: 0.885829
+basis [2] GTO [2] exp: 0.22229
+basis [2] GTO [2] contract coeff: 0.391957
+basis [2] GTO [2] normalization constant: 0.217565
+L: 1 0 0 
+Coord: 2.0787 0 0 
+
+
+
+atomic number: 6
+basis [3] GTO [0] exp: 2.94125
+basis [3] GTO [0] contract coeff: 0.155916
+basis [3] GTO [0] normalization constant: 5.49041
+basis [3] GTO [1] exp: 0.683483
+basis [3] GTO [1] contract coeff: 0.607684
+basis [3] GTO [1] normalization constant: 0.885829
+basis [3] GTO [2] exp: 0.22229
+basis [3] GTO [2] contract coeff: 0.391957
+basis [3] GTO [2] normalization constant: 0.217565
+L: 0 1 0 
+Coord: 2.0787 0 0 
+
+
+
+atomic number: 6
+basis [4] GTO [0] exp: 2.94125
+basis [4] GTO [0] contract coeff: 0.155916
+basis [4] GTO [0] normalization constant: 5.49041
+basis [4] GTO [1] exp: 0.683483
+basis [4] GTO [1] contract coeff: 0.607684
+basis [4] GTO [1] normalization constant: 0.885829
+basis [4] GTO [2] exp: 0.22229
+basis [4] GTO [2] contract coeff: 0.391957
+basis [4] GTO [2] normalization constant: 0.217565
+L: 0 0 1 
+Coord: 2.0787 0 0 
+
+
+
+atomic number: 6
+basis [5] GTO [0] exp: 2.94125
+basis [5] GTO [0] contract coeff: -0.0999672
+basis [5] GTO [0] normalization constant: 1.6007
+basis [5] GTO [1] exp: 0.683483
+basis [5] GTO [1] contract coeff: 0.399513
+basis [5] GTO [1] normalization constant: 0.535742
+basis [5] GTO [2] exp: 0.22229
+basis [5] GTO [2] contract coeff: 0.700115
+basis [5] GTO [2] normalization constant: 0.230728
+L: 0 0 0 
+Coord: 4.3653 0 0 
+
+
+
+atomic number: 6
+basis [6] GTO [0] exp: 2.94125
+basis [6] GTO [0] contract coeff: 0.155916
+basis [6] GTO [0] normalization constant: 5.49041
+basis [6] GTO [1] exp: 0.683483
+basis [6] GTO [1] contract coeff: 0.607684
+basis [6] GTO [1] normalization constant: 0.885829
+basis [6] GTO [2] exp: 0.22229
+basis [6] GTO [2] contract coeff: 0.391957
+basis [6] GTO [2] normalization constant: 0.217565
+L: 1 0 0 
+Coord: 4.3653 0 0 
+
+
+
+atomic number: 6
+basis [7] GTO [0] exp: 2.94125
+basis [7] GTO [0] contract coeff: 0.155916
+basis [7] GTO [0] normalization constant: 5.49041
+basis [7] GTO [1] exp: 0.683483
+basis [7] GTO [1] contract coeff: 0.607684
+basis [7] GTO [1] normalization constant: 0.885829
+basis [7] GTO [2] exp: 0.22229
+basis [7] GTO [2] contract coeff: 0.391957
+basis [7] GTO [2] normalization constant: 0.217565
+L: 0 1 0 
+Coord: 4.3653 0 0 
+
+
+
+atomic number: 6
+basis [8] GTO [0] exp: 2.94125
+basis [8] GTO [0] contract coeff: 0.155916
+basis [8] GTO [0] normalization constant: 5.49041
+basis [8] GTO [1] exp: 0.683483
+basis [8] GTO [1] contract coeff: 0.607684
+basis [8] GTO [1] normalization constant: 0.885829
+basis [8] GTO [2] exp: 0.22229
+basis [8] GTO [2] contract coeff: 0.391957
+basis [8] GTO [2] normalization constant: 0.217565
+L: 0 0 1 
+Coord: 4.3653 0 0 
+
+
+
+atomic number: 1
+basis [9] GTO [0] exp: 3.42525
+basis [9] GTO [0] contract coeff: 0.154329
+basis [9] GTO [0] normalization constant: 1.79444
+basis [9] GTO [1] exp: 0.623914
+basis [9] GTO [1] contract coeff: 0.535328
+basis [9] GTO [1] normalization constant: 0.500326
+basis [9] GTO [2] exp: 0.168855
+basis [9] GTO [2] contract coeff: 0.444635
+basis [9] GTO [2] normalization constant: 0.187735
+L: 0 0 0 
+Coord: 6.444 0 0 
+
+
+Overlap Matrix: 
+   1.0000e+00   4.8501e-01  -4.6382e-01            0            0   7.2952e-02  -9.7547e-02            0            0   7.3985e-03
+   4.8501e-01   1.0000e+00            0            0            0   4.6629e-01  -4.5219e-01            0            0   7.2952e-02
+  -4.6382e-01            0   1.0000e+00            0            0   4.5219e-01  -3.1207e-01            0            0   9.7547e-02
+            0            0            0   1.0000e+00            0            0            0   2.9737e-01            0            0
+            0            0            0            0   1.0000e+00            0            0            0   2.9737e-01            0
+   7.2952e-02   4.6629e-01   4.5219e-01            0            0   1.0000e+00  -6.7317e-16            0            0   4.8501e-01
+  -9.7547e-02  -4.5219e-01  -3.1207e-01            0            0  -6.7317e-16   1.0000e+00            0            0   4.6382e-01
+            0            0            0   2.9737e-01            0            0            0   1.0000e+00            0            0
+            0            0            0            0   2.9737e-01            0            0            0   1.0000e+00            0
+   7.3985e-03   7.2952e-02   9.7547e-02            0            0   4.8501e-01   4.6382e-01            0            0   1.0000e+00
+
+Hamiltonian Matrix: 
+  -1.3600e+01  -1.4854e+01   1.0146e+01            0            0  -2.2342e+00   2.1338e+00            0            0  -1.7609e-01
+  -1.4854e+01  -2.1400e+01            0            0            0  -1.7462e+01   1.2978e+01            0            0  -2.2342e+00
+   1.0146e+01            0  -1.1400e+01            0            0  -1.2978e+01   6.2258e+00            0            0  -2.1338e+00
+            0            0            0  -1.1400e+01            0            0            0  -5.9325e+00            0            0
+            0            0            0            0  -1.1400e+01            0            0            0  -5.9325e+00            0
+  -2.2342e+00  -1.7462e+01  -1.2978e+01            0            0  -2.1400e+01   1.9320e-14            0            0  -1.4854e+01
+   2.1338e+00   1.2978e+01   6.2258e+00            0            0   1.9320e-14  -1.1400e+01            0            0  -1.0146e+01
+            0            0            0  -5.9325e+00            0            0            0  -1.1400e+01            0            0
+            0            0            0            0  -5.9325e+00            0            0            0  -1.1400e+01            0
+  -1.7609e-01  -2.2342e+00  -2.1338e+00            0            0  -1.4854e+01  -1.0146e+01            0            0  -1.3600e+01
+
+Orthogonalization Matrix: 
+   1.2686e+00  -2.9295e-01   3.9220e-01  -4.1179e-17   1.1802e-16  -8.6119e-02   7.2306e-02  -3.1993e-17   4.2942e-17  -1.2048e-02
+  -2.9295e-01   1.4802e+00   2.0371e-01  -8.4466e-17   7.8452e-17  -4.6197e-01   4.8690e-01   3.3606e-16  -1.8781e-16  -8.6119e-02
+   3.9220e-01   2.0371e-01   1.4501e+00  -3.9045e-17   9.9348e-17  -4.8690e-01   4.2301e-01   1.4637e-16  -1.9279e-16  -7.2306e-02
+  -4.1179e-17  -8.4466e-17  -3.9045e-17   1.0355e+00  -2.0028e-16  -5.1789e-18   8.1596e-17  -1.5752e-01   3.0365e-16   1.3948e-18
+   1.1802e-16   7.8452e-17   9.9348e-17  -1.2418e-16   1.0355e+00  -7.2560e-17   8.9975e-17   3.7725e-16  -1.5752e-01  -3.5574e-17
+  -8.6119e-02  -4.6197e-01  -4.8690e-01  -5.1789e-18  -7.2560e-17   1.4802e+00  -2.0371e-01  -2.3365e-16   3.3256e-16  -2.9295e-01
+   7.2306e-02   4.8690e-01   4.2301e-01   8.1596e-17   8.9975e-17  -2.0371e-01   1.4501e+00   1.2081e-16  -2.4601e-17  -3.9220e-01
+  -3.1993e-17   3.3606e-16   1.4637e-16  -1.5752e-01   3.7610e-16  -2.3365e-16   1.2081e-16   1.0355e+00   3.6952e-17   7.4320e-18
+   4.2942e-17  -1.8781e-16  -1.9279e-16   2.9141e-16  -1.5752e-01   3.3256e-16  -2.4601e-17   2.6101e-17   1.0355e+00   3.1535e-17
+  -1.2048e-02  -8.6119e-02  -7.2306e-02   1.3948e-18  -3.5574e-17  -2.9295e-01  -3.9220e-01   7.4320e-18   3.1535e-17   1.2686e+00
+
+Coefficient Matrix: 
+  -9.1509e-02   3.3303e-01   3.7688e-01   3.7818e-16   1.0768e-16   2.6170e-16   1.7213e-16  -9.0554e-01   8.7300e-01   1.3580e-01
+  -5.3539e-01   3.7953e-01  -3.9308e-02  -2.9613e-16   1.7463e-16   2.2764e-17  -7.0527e-17   5.2740e-01  -5.8491e-01   1.3129e+00
+  -3.5750e-02  -2.3725e-01  -4.2622e-01  -1.3423e-16  -6.5131e-16   1.8563e-16   1.2830e-17  -6.2436e-01   6.6014e-01   1.2863e+00
+   3.4501e-16  -2.4140e-16   3.0604e-16  -6.0782e-01   1.2628e-01   8.2333e-01  -1.8367e-01   5.1551e-17  -8.6381e-17  -8.0266e-17
+  -1.2105e-16  -2.4452e-17   9.0476e-16  -1.2628e-01  -6.0782e-01  -1.8367e-01  -8.2333e-01  -1.0403e-16   1.0571e-16   2.6336e-16
+  -5.3539e-01  -3.7953e-01  -3.9308e-02   1.6996e-16  -1.8514e-16   1.2481e-16  -1.2933e-17  -5.2740e-01  -5.8491e-01  -1.3129e+00
+   3.5750e-02  -2.3725e-01   4.2622e-01   3.6613e-17   9.9350e-16  -9.5969e-17  -3.2023e-16  -6.2436e-01  -6.6014e-01   1.2863e+00
+  -3.1085e-16   4.1955e-16  -1.9588e-16  -6.0782e-01   1.2628e-01  -8.2333e-01   1.8367e-01  -2.0587e-16   1.6948e-16   6.2271e-16
+  -2.4167e-16  -6.5888e-16   1.5605e-15  -1.2628e-01  -6.0782e-01   1.8367e-01   8.2333e-01   2.3120e-16  -3.0420e-16  -6.5950e-16
+  -9.1509e-02  -3.3303e-01   3.7688e-01   9.8138e-17   9.7730e-16  -3.2528e-16  -1.4834e-16   9.0554e-01   8.7300e-01  -1.3580e-01
+
+Total Energy: -177.17

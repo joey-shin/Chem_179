@@ -1,0 +1,51 @@
+file opened!
+number of basis: 2
+number of electrons pairs: 1
+
+
+atomic number: 1
+basis [0] GTO [0] exp: 3.42525
+basis [0] GTO [0] contract coeff: 0.154329
+basis [0] GTO [0] normalization constant: 1.79444
+basis [0] GTO [1] exp: 0.623914
+basis [0] GTO [1] contract coeff: 0.535328
+basis [0] GTO [1] normalization constant: 0.500326
+basis [0] GTO [2] exp: 0.168855
+basis [0] GTO [2] contract coeff: 0.444635
+basis [0] GTO [2] normalization constant: 0.187735
+L: 0 0 0 
+Coord: 0 0 0 
+
+
+
+atomic number: 1
+basis [1] GTO [0] exp: 3.42525
+basis [1] GTO [0] contract coeff: 0.154329
+basis [1] GTO [0] normalization constant: 1.79444
+basis [1] GTO [1] exp: 0.623914
+basis [1] GTO [1] contract coeff: 0.535328
+basis [1] GTO [1] normalization constant: 0.500326
+basis [1] GTO [2] exp: 0.168855
+basis [1] GTO [2] contract coeff: 0.444635
+basis [1] GTO [2] normalization constant: 0.187735
+L: 0 0 0 
+Coord: 1.3984 0 0 
+
+
+Overlap Matrix: 
+   1.0000   0.6599
+   0.6599   1.0000
+
+Hamiltonian Matrix: 
+  -13.6000  -15.7050
+  -15.7050  -13.6000
+
+Orthogonalization Matrix: 
+   1.2454  -0.4692
+  -0.4692   1.2454
+
+Coefficient Matrix: 
+   0.5488  -1.2125
+   0.5488   1.2125
+
+Total Energy: -35.3099

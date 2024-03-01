@@ -75,6 +75,11 @@ void read_shell(vector<Shells>& Shell, const string& file_name){
 
         if (num_of_elements == 3){ //1D coordinate input read
             isstring >> input_shell.coord_1D >> input_shell.exp >> input_shell.total_L;
+
+            isstring >> input_shell.coord_1D;
+            isstring >>input_shell.exp;
+            isstring >> input_shell.total_L;
+
         } else if (num_of_elements > 3){ //larger coordinate dim input read
             for(int i = 0; i < num_of_elements - 2; i++){
                 isstring >> number_str;
