@@ -11,6 +11,7 @@ int main(int argc, char* argv[]) {
     int n = 0; //number of electron pairs
 
     //constructs basis
+    //format for console inputs
     //argv[1]: basis/H_STO3G.txt
     //argv[2]: basis/C_STO3G.txt
     //argv[3]: sample_input/[molecule].txt
