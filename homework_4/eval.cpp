@@ -5,9 +5,11 @@
 
 #include "eval.h"
 #include "STO3G.h"
+#include "Atom.h"
 
 using namespace std;
 using namespace arma;
+
 
 int factorial(int l){
     int total = 1;
@@ -52,7 +54,8 @@ double overlap_1D_ana_int(double exp_a, double exp_b, int l_a, int l_b, double c
         for(int j = 0; j <= l_b; j++){
             if(((i + j) % 2) == 0){
                 sum += binomial(l_a, i) * binomial(l_b, j) * ((double_factorial(i + j - 1) *
-                                                               pow((coord_p - coord_a),(l_a - i)) * pow((coord_p - coord_b),(l_b - j))) /
+                                                               pow((coord_p - coord_a),(l_a - i)) *
+                                                               pow((coord_p - coord_b),(l_b - j))) /
                                                               pow((2 * (exp_a + exp_b)),((i + j) * 0.5)));
             }
         }
@@ -61,14 +64,67 @@ double overlap_1D_ana_int(double exp_a, double exp_b, int l_a, int l_b, double c
 }
 
 //returns overlap integration with analytical integration in 3D
-double overlap_3D_ana_int(double exp_a, double exp_b, vector<int> l_a, vector<int> l_b, vector<double> coord_a, vector<double> coord_b){
+double overlap_3D_ana_int(double exp_a, double exp_b, vector<int> l_a, vector<int> l_b, vec coord_a,
+                          vec coord_b){
     double total_overlap = 1;
 
     for(int i = 0; i < 3; i++){
-        total_overlap *= overlap_1D_ana_int(exp_a, exp_b, l_a[i], l_b[i], coord_a[i], coord_b[i]);
+        total_overlap *= overlap_1D_ana_int(exp_a, exp_b, l_a[i], l_b[i],
+                                            coord_a(i), coord_b(i));
     }
     return total_overlap;
 }
+
+
+double boysFunction(double alpha_k, double alpha_k_p, double beta_k, double beta_k_p, double distance){
+    double sigma_A = pow((alpha_k + alpha_k_p), -1.0);
+    double sigma_B = pow((beta_k + beta_k_p), -1.0);
+    double U_A = pow((M_PI * sigma_A), 1.5);
+    double U_B = pow((M_PI * sigma_B), 1.5);
+    double V_square = pow((sigma_A + sigma_B), -1.0);
+    double T = V_square * distance;
+
+    if(T == 0){
+        return 27.221 * U_A * U_B * sqrt(2 * V_square) * sqrt(2.0 / M_PI);
+    }
+    return 27.221 * U_A * U_B * sqrt(pow(distance, -1.0)) * erf(sqrt(T));
+}
+
+
+double gamma_element(Atom A, Atom B){
+    double total = 0;
+
+    for(int i = 0; i < 3; i++){
+        double d_p_k = A.AOs[0].primitive[i].d * A.AOs[0].primitive[i].N;
+        for(int j = 0; j < 3; j++){
+            double d_p_k_p = A.AOs[0].primitive[j].d * A.AOs[0].primitive[j].N;
+            for(int k = 0; k < 3; k++){
+                double d_p_l = B.AOs[0].primitive[k].d * B.AOs[0].primitive[k].N;
+                for(int l = 0; l < 3; l++){
+                    double d_p_l_p = B.AOs[0].primitive[l].d * B.AOs[0].primitive[l].N;
+
+                    total += d_p_k * d_p_k_p * d_p_l * d_p_l_p * boysFunction(
+                            A.AOs[0].primitive[i].exp, A.AOs[0].primitive[j].exp,
+                            B.AOs[0].primitive[k].exp, B.AOs[0].primitive[l].exp,
+                            pow(norm(A.coord - B.coord), 2));
+                }
+            }
+        }
+    }
+
+    return total;
+}
+
+
+
+void gamma_matrix(mat& gamma, vector<Atom>& atoms){
+    for(int i = 0; i < atoms.size(); i++){
+        for(int j = 0; j < atoms.size(); j++){
+            gamma(i, j) = gamma_element(atoms[i], atoms[j]);
+        }
+    }
+}
+
 
 double STO3G_overlap(STO3G A, STO3G B){
     double overlap = 0.0;
@@ -76,41 +132,31 @@ double STO3G_overlap(STO3G A, STO3G B){
     for(int i = 0; i < 3; i++){
         for(int j = 0; j < 3; j++){
             overlap += A.primitive[i].d * B.primitive[j].d * A.primitive[i].N * B.primitive[j].N *
-                    overlap_3D_ana_int(A.primitive[i].exp, B.primitive[j].exp, A.L, B.L,
-                                       A.coord, B.coord);
+                       overlap_3D_ana_int(A.primitive[i].exp, B.primitive[j].exp, A.L_vec, B.L_vec,
+                                          A.coord, B.coord);
         }
     }
     return overlap;
 }
 
 
+
 //construct overlap matrix
-void overlap_matrix(mat& S, vector<STO3G>& basis){
-    for(int i = 0; i < basis.size(); i++){
-        for(int j = 0; j < basis.size(); j++){
-            S(i, j) = STO3G_overlap(basis[i], basis[j]);
+void overlap_matrix(mat& S, Basis& basis){
+    for(int i = 0; i < basis.basis.size(); i++){
+        for(int j = 0; j < basis.basis.size(); j++){
+            S(i, j) = STO3G_overlap(basis.basis[i], basis.basis[j]);
         }
     }
 }
 
 
+/*
 //returns diagonals of the hamiltonian matrix
 double return_hamiltonian(STO3G basis){
-    double h_H1s = -13.6;
-    double h_C2s = -21.4;
-    double h_C2p = -11.4;
 
-    if(basis.atomic_number == 1){
-        return h_H1s;
-    } else if(basis.atomic_number == 6){
-        if(basis.total_L == 0){
-            return h_C2s;
-        } else if(basis.total_L == 1){
-            return h_C2p;
-        }
-    }
-    throw runtime_error("molecule is not a hydrocarbon. ");
 }
+
 
 
 //construct hamiltonian matrix
@@ -157,3 +203,4 @@ void coefficient_matrix_energy(mat& H, mat& X, mat& C, double& E, int& n){
         E += 2 * E_eval(i);
     }
 }
+*/

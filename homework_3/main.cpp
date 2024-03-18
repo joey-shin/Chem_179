@@ -14,7 +14,7 @@ int main(int argc, char* argv[]) {
     //format for console inputs
     //argv[1]: basis/H_STO3G.txt
     //argv[2]: basis/C_STO3G.txt
-    //argv[3]: sample_input/[molecule].txt
+    //argv[3]:
     construct_basis(basis, argv[1], argv[2], argv[3], n);
 
     //basis information output
@@ -70,6 +70,8 @@ int main(int argc, char* argv[]) {
     cout << "Coefficient Matrix: " << endl;
     cout << C << endl;
     cout << "Total Energy: " << E << endl;
+
+
 
     return 0;
 }

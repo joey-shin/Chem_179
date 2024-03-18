@@ -68,9 +68,3 @@ void normalize_GTO(vector<GTO>& primitive, vector<int>& L, vector<double>& coord
         primitive[i].N = pow(sqrt(overlap), -1.0);
     }
 }
-
-
-
-
-
-

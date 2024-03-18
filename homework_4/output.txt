@@ -1,0 +1,157 @@
+number of Atoms: 2
+
+Atom 0
+
+atomic number: 1
+Coord: 0 0 0 
+
+STO3G 0
+total_L: 0
+IA: 7.7176
+beta: -9
+Z: 1
+L: 0 0 0 
+
+primitive 0
+exp 3.42525
+d 0.154329
+N 1.79444
+
+primitive 1
+exp 0.623914
+d 0.535328
+N 0.500326
+
+primitive 2
+exp 0.168855
+d 0.444635
+N 0.187735
+
+
+Atom 1
+
+atomic number: 8
+Coord: 1.83 0 0 
+
+STO3G 0
+total_L: 0
+IA: 25.39
+beta: -31
+Z: 6
+L: 0 0 0 
+
+primitive 0
+exp 5.03315
+d -0.0999672
+N 2.39491
+
+primitive 1
+exp 1.1696
+d 0.399513
+N 0.801562
+
+primitive 2
+exp 0.380389
+d 0.700115
+N 0.345208
+
+
+
+STO3G 1
+total_L: 1
+IA: 9.111
+beta: -31
+Z: 6
+L: 1 0 0 
+
+primitive 0
+exp 5.03315
+d 0.155916
+N 10.7458
+
+primitive 1
+exp 1.1696
+d 0.607684
+N 1.73374
+
+primitive 2
+exp 0.380389
+d 0.391957
+N 0.425819
+
+
+
+STO3G 2
+total_L: 1
+IA: 9.111
+beta: -31
+Z: 6
+L: 0 1 0 
+
+primitive 0
+exp 5.03315
+d 0.155916
+N 10.7458
+
+primitive 1
+exp 1.1696
+d 0.607684
+N 1.73374
+
+primitive 2
+exp 0.380389
+d 0.391957
+N 0.425819
+
+
+
+STO3G 3
+total_L: 1
+IA: 9.111
+beta: -31
+Z: 6
+L: 0 0 1 
+
+primitive 0
+exp 5.03315
+d 0.155916
+N 10.7458
+
+primitive 1
+exp 1.1696
+d 0.607684
+N 1.73374
+
+primitive 2
+exp 0.380389
+d 0.391957
+N 0.425819
+
+number of basis: 5
+
+basis 0
+L: 0 0 0 
+
+
+basis 1
+L: 0 0 0 
+
+
+basis 2
+L: 1 0 0 
+
+
+basis 3
+L: 0 1 0 
+
+
+basis 4
+L: 0 0 1 
+
+n: 7
+p: 4
+q: 3
+gamma matrix: 
+   21.0855   13.5905
+   13.5905   22.2452
+
