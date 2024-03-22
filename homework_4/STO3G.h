@@ -11,6 +11,7 @@ struct STO3G{
     vector<GTO> primitive;
     vector<int> L_vec; //angular quantum number vector
     vec coord;
+    int atomic_number;
     int total_L;
     double IA;
     double beta;

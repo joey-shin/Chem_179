@@ -17,7 +17,7 @@ using namespace arma;
 
 
 //reads STO3G file and constructs vector of GTO
-void read_STO3G(vector<GTO>& primitive, const int& atomic_number, const int& total_L, string& basis_file_name){
+void read_STO3G(vector<GTO>& primitive, const int& total_L, string& basis_file_name){
     string line, temp;
     ifstream in;
 

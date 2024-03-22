@@ -117,6 +117,8 @@ void construct_basis(vector<STO3G>& basis, const string& mol_file, int& n){
 //reads file and constructs a single basis
 void construct_AO(STO3G& AO, int& atomic_number, int& total_L, const vec& coord){
     AO.total_L = total_L;
+    AO.coord = coord;
+    AO.atomic_number = atomic_number;
 
     for(int i = 0; i < 3; i++){
         GTO gto;
@@ -129,7 +131,7 @@ void construct_AO(STO3G& AO, int& atomic_number, int& total_L, const vec& coord)
         case 1:
             basis_file_name = "basis/H_STO3G.txt";
             AO.Z = 1;
-            AO.IA = 7.7176;
+            AO.IA = 7.176;
             AO.beta = -9;
             break;
         case 6:
@@ -150,7 +152,7 @@ void construct_AO(STO3G& AO, int& atomic_number, int& total_L, const vec& coord)
             } else if(total_L == 1){
                 AO.IA = 7.275;
             }
-            AO.beta = -21;
+            AO.beta = -25;
             break;
         case 8:
             basis_file_name = "basis/O_STO3G.txt";
@@ -176,6 +178,6 @@ void construct_AO(STO3G& AO, int& atomic_number, int& total_L, const vec& coord)
             throw runtime_error("Atomic number " + to_string(atomic_number) + " isn't valid nor defined");
     }
 
-    read_STO3G(AO.primitive, atomic_number, AO.total_L, basis_file_name);
+    read_STO3G(AO.primitive, AO.total_L, basis_file_name);
     normalize_GTO(AO.primitive, AO.L_vec, coord);
 }

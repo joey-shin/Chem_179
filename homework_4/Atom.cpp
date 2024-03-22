@@ -62,8 +62,6 @@ void construct_Atoms(vector<Atom>& atoms, const string& mol_file){
             throw runtime_error("atomic number invalid");
         }
 
-        instance_Atom.atomic_number = atomic_number;
-
         mat L_matrix;
 
         //set up L matrix
@@ -76,13 +74,11 @@ void construct_Atoms(vector<Atom>& atoms, const string& mol_file){
 
         //create instance coord vector
         double coord_temp;
-
-        //vector<double> current_coord;
-        instance_Atom.coord.set_size(3);
+        vec coord(3);
 
         for(int j = 0; j < 3; j++){
             isstring >> coord_temp;
-            instance_Atom.coord(j) = coord_temp;
+            coord(j) = coord_temp;
         }
 
         //create new STO3G for each set of quantum numbers
@@ -97,12 +93,12 @@ void construct_Atoms(vector<Atom>& atoms, const string& mol_file){
             for(int k = 0; k < 3; k++){
                 total_L += L_matrix(j, k);
                 instance_AO.L_vec.push_back(L_matrix(j, k));
-                instance_AO.coord(k) = instance_Atom.coord(k);
+                //coord(k) = instance_Atom.coord(k);
             }
             instance_AO.total_L = total_L;
 
             //set up atomic number, coord vector, L vector, total_L in current STO3G basis
-            construct_AO(instance_AO, atomic_number, total_L, instance_Atom.coord);
+            construct_AO(instance_AO, atomic_number, total_L, coord);
             instance_Atom.AOs.push_back(instance_AO);
         }
         atoms.push_back(instance_Atom);
@@ -111,16 +107,20 @@ void construct_Atoms(vector<Atom>& atoms, const string& mol_file){
     in_mol.close();
 }
 
+//Construct Basis structure
 void construct_basis(Basis& basis, const vector<Atom>& atoms){
     basis.n = 0;
 
     for(int i = 0; i < atoms.size(); i++){
         for(int j = 0; j < atoms[i].AOs.size(); j++){
             basis.basis.push_back(atoms[i].AOs[j]);
+            basis.atom_index.push_back(i);
         }
+        //calculate total number of electrons n
         basis.n += atoms[i].AOs[0].Z; //Z in all AO contained in atom identical, using index 0
     }
 
+    //set p and q
     basis.p = ceil(basis.n / 2.0);
     basis.q = floor(basis.n / 2.0);
 }

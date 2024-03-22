@@ -8,14 +8,15 @@
 #include "GTO.h"
 #include "STO3G.h"
 
+//main structure, contains Atomic orbitals
 struct Atom{
     vector<STO3G> AOs;
-    vec coord;
-    int atomic_number;
 };
 
+//expansion of every STO3G in every Atom into vector for convenience
 struct Basis{
     vector<STO3G> basis;
+    vector<int> atom_index;
     int n;
     int p;
     int q;

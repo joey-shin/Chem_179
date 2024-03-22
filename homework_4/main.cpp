@@ -9,126 +9,111 @@
 int main(int argc, char* argv[]) {
 
     //construct vector of atoms
-    vector<Atom> atoms;
+    vector<Atom> molecule;
     Basis basis;
-    construct_Atoms(atoms, argv[1]);
-    construct_basis(basis, atoms);\
+    construct_Atoms(molecule, argv[1]);
+    construct_basis(basis, molecule);
 
+    /*
+     *
+     *
     //print all values of Atom structure and sub structures
-    cout << "number of Atoms: " << atoms.size() << endl;
-    for(int i = 0; i < atoms.size(); i++){
+    //for debugging purpose
+    cout << "number of Atoms: " << molecule.size() << endl;
+    for(int i = 0; i < molecule.size(); i++){
         cout << '\n' << "Atom " << i << '\n';
-        cout << '\n' << "atomic number: " << atoms[i].atomic_number << '\n';
-        cout << "Coord: ";
-        for(int j = 0; j < 3; j++){
-            cout << atoms[i].coord[j] << ' ';
-        }
 
-        for(int j = 0; j < atoms[i].AOs.size(); j++){
-            cout << '\n' << '\n' << "STO3G " << j << '\n';
-            cout << "total_L: " << atoms[i].AOs[j].total_L << '\n';
-            cout << "IA: " << atoms[i].AOs[j].IA << '\n';
-            cout << "beta: " << atoms[i].AOs[j].beta << '\n';
-            cout << "Z: " << atoms[i].AOs[j].Z << '\n';
+        for(int j = 0; j < molecule[i].AOs.size(); j++){
+            cout << '\n' << "STO3G " << j << '\n';
+            cout << "total_L: " << molecule[i].AOs[j].total_L << '\n';
+            cout << "atomic number: " << molecule[i].AOs[j].atomic_number << '\n';
+            cout << "IA: " << molecule[i].AOs[j].IA << '\n';
+            cout << "beta: " << molecule[i].AOs[j].beta << '\n';
+            cout << "Z: " << molecule[i].AOs[j].Z << '\n';
             cout << "L: ";
             for(int k = 0; k < 3; k++){
-                cout << atoms[i].AOs[j].L_vec[k] << ' ';
+                cout << molecule[i].AOs[j].L_vec[k] << ' ';
+            }
+            cout << endl;
+            cout << "Coord: ";
+            for(int k = 0; k < 3; k++){
+                cout << molecule[i].AOs[j].coord[k] << ' ';
             }
             cout << '\n' << endl;
 
-            for(int k = 0; k < atoms[i].AOs[j].primitive.size(); k++){
+            for(int k = 0; k < molecule[i].AOs[j].primitive.size(); k++){
                 cout << "primitive " << k << '\n';
-                cout << "exp " << atoms[i].AOs[j].primitive[k].exp << '\n';
-                cout << "d " << atoms[i].AOs[j].primitive[k].d << '\n';
-                cout << "N " << atoms[i].AOs[j].primitive[k].N << '\n' << endl;
+                cout << "exp " << molecule[i].AOs[j].primitive[k].exp << '\n';
+                cout << "d " << molecule[i].AOs[j].primitive[k].d << '\n';
+                cout << "N " << molecule[i].AOs[j].primitive[k].N << '\n' << endl;
             }
         }
     }
 
     //print all values of Basis structure
-    cout << "number of basis: " << basis.basis.size() << endl;
+    cout << '\n' << "number of basis: " << basis.basis.size() << endl;
     for(int i = 0; i < basis.basis.size(); i++){
         cout << '\n' << "basis " << i << '\n';
         cout << "L: ";
         for(int k = 0; k < 3; k++){
             cout << basis.basis[i].L_vec[k] << ' ';
         }
+        cout << endl;
+        cout << "L: ";
+        for(int k = 0; k < 3; k++){
+            cout << basis.basis[i].coord[k] << ' ';
+        }
         cout << '\n' << endl;
     }
-
+    cout << "atom index: " << endl;
+    for(int i = 0; i < basis.atom_index.size(); i++){
+        cout << basis.atom_index[i] << " ";
+    }
+    cout << '\n' << endl;
     cout  << "n: " << basis.n << endl;
     cout  << "p: " << basis.p << endl;
-    cout  << "q: " << basis.q << endl;
+    cout  << "q: " << basis.q << '\n' << endl;
+     */
 
-
-    mat gamma(atoms.size(), atoms.size());
-    gamma_matrix(gamma, atoms);
+    //gamma matrix construction
+    mat gamma(molecule.size(), molecule.size());
+    gamma_matrix(gamma, molecule);
     cout << "gamma matrix: " << endl;
     cout << gamma << endl;
 
-    /*
-    vector<STO3G> basis;
-    int n = 0; //number of electron pairs
-
-    //constructs basis
-    //format for console inputs
-    //argv[1]: sample_input/[filename]
-    construct_basis(basis, argv[1], n);
-
-    //basis information output
-    cout << "number of basis: " << basis.size() << endl;
-    cout << "number of electrons pairs: " << n << '\n' << endl;
-
-    for(int i = 0; i < basis.size(); i++){
-        cout << '\n' << "atomic number: " << basis[i].atomic_number << '\n';
-        for(int j = 0; j < 3; j++){
-            cout << "basis [" << i << "] GTO [" << j << "] exp: " << basis[i].primitive[j].exp << endl;
-            cout << "basis [" << i << "] GTO [" << j << "] contract coeff: " << basis[i].primitive[j].d << endl;
-            cout << "basis [" << i << "] GTO [" << j << "] normalization constant: " << basis[i].primitive[j].N << endl;
-        }
-        cout << "L: ";
-        for(int j = 0; j < 3; j++){
-            cout << basis[i].L[j] << ' ';
-        }
-        cout << endl;
-
-        cout << "Coord: ";
-        for(int j = 0; j < 3; j++){
-            cout << basis[i].coord[j] << ' ';
-        }
-        cout << '\n' << '\n' << endl;
-    }
-
-    //construct overlap matrix
-    mat S(basis.size(), basis.size());
+    //overlap matrix construction
+    mat S(basis.basis.size(), basis.basis.size());
     overlap_matrix(S, basis);
-
-    cout << "Overlap Matrix: " << endl;
+    cout << "S: " << endl;
     cout << S << endl;
 
-    //construct hamiltonian matrix
-    mat H(basis.size(), basis.size());
-    hamiltonian_matrix(H, S, basis);
-
-    cout << "Hamiltonian Matrix: " << endl;
+    //hailtonian matrix construction
+    mat H(basis.basis.size(), basis.basis.size());
+    core_hamiltonian_matrix(H, S, basis, molecule);
+    cout << "core H: " << endl;
     cout << H << endl;
 
-    //construct orthogonalizing matrix
-    mat X(basis.size(), basis.size());
-    orthogonalization_matrix(X, S);
+    //initial density matrix construction (P_alpha_initial = P_beta_initial = 0)
+    mat P_A_i(basis.basis.size(), basis.basis.size(), fill::zeros);
+    mat P_B_i(basis.basis.size(), basis.basis.size(), fill::zeros);
 
-    cout << "Orthogonalization Matrix: " << endl;
-    cout << X << endl;
+    mat F_A(basis.basis.size(), basis.basis.size());
+    mat F_B(basis.basis.size(), basis.basis.size());
+    mat P_A(basis.basis.size(), basis.basis.size());
+    mat P_B(basis.basis.size(), basis.basis.size());
 
-    //construct coefficient matrix and calculate energy
-    mat C(basis.size(), basis.size());
-    double E = 0.0;
-    coefficient_matrix_energy(H, X, C, E, n);
+    //SCF convergence algorithm
+    SCF(F_A, F_B, P_A, P_B, P_A_i, P_B_i, S, basis, molecule);
 
-    cout << "Coefficient Matrix: " << endl;
-    cout << C << endl;
-    cout << "Total Energy: " << E << endl;
-    */
+    //energy calculation
+    double electron_Energy = electron_E(H, F_A, F_B, P_A, P_B, basis);
+    cout << "electron energy: " << electron_Energy << '\n';
+
+    double nuclear_repulsion_E = nuc_repulsion_E(molecule);
+    cout << "nuclear repulsion energy: " << nuclear_repulsion_E << '\n';
+
+    double total_energy = electron_Energy + nuclear_repulsion_E;
+    cout << "total energy: " << total_energy << '\n';
 
     return 0;
 }
