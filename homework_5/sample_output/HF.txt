@@ -1,0 +1,3 @@
+electron energy: -873.141
+nuclear repulsion energy: 110.742
+total energy: -762.399
