@@ -239,7 +239,7 @@ void fock_matrix(mat& F, const mat& P_alpha, const mat& P_beta, const mat& S, co
         for(int j = 0; j < basis.basis.size(); j++){
             if(i == j){
                 //terms 1 and 2 calculation
-                term_1 = basis.basis[i].IA; // 0.5 not in the first term???
+                term_1 = basis.basis[i].IA;
                 term_2 = ((P_atom_overlap(basis.atom_index[i]) - A.AOs[0].Z) -
                           (P_alpha(i, i) - 0.5)) * gamma_element(A, A);
 
@@ -353,24 +353,8 @@ double nuc_repulsion_E(vector<Atom>& molecule){
     return E * 27.211 * 0.5;
 }
 
-/*
-//construct Y matrix
-void Y_matrix(mat& Y, const vector<Atom>& molecule, const Basis& basis, const mat& P_A, const mat& P_B){
-    mat P = P_A + P_B;
-    vec P_atom_overlap(molecule.size());
-    density_atom_overlap(P_atom_overlap, P, molecule, basis);
-
-    for(int i = 0; i < molecule.size(); i++){
-        for(int j = 0; j < molecule.size(); j++){
-            if(i != j){
-                Y(i, j) = (P_atom_overlap(i) *  P_atom_overlap(j)) - P_atom_overlap(i) *  P_atom_overlap(j)
-            }
-        }
-    }
-}
-*/
-
-double boysFunction_R(double alpha_k, double alpha_k_p, double beta_k, double beta_k_p, vec A_coord, vec B_coord, int pointer){
+double boysFunction_R(double alpha_k, double alpha_k_p, double beta_k, double beta_k_p, vec A_coord, vec B_coord,
+                      int pointer){
     double sigma_A = pow((alpha_k + alpha_k_p), -1.0);
     double sigma_B = pow((beta_k + beta_k_p), -1.0);
     double U_A = pow((M_PI * sigma_A), 1.5);
@@ -423,11 +407,73 @@ void gamma_R_matrix(mat& gamma_R, const vector<Atom>& molecule){
     }
 }
 
-/*
-void S_R_matrix(mat& S_R, const vector<Atom>& molecule, const Basis& basis){
-
+double overlap_1D_R(double exp_a, double exp_b, int l_a, int l_b, double coord_a, double coord_b){
+     return (-1 * l_a * overlap_1D_ana_int(exp_a, exp_b, l_a - 1, l_b, coord_a, coord_b)) +
+             (2 * exp_a * overlap_1D_ana_int(exp_a, exp_b, l_a + 1, l_b, coord_a, coord_b));
 }
- */
+
+//returns overlap integration with analytical integration in 3D
+double overlap_3D_R(double exp_a, double exp_b, vector<int> l_a, vector<int> l_b, vec coord_a,
+                          vec coord_b, int pointer){
+    double total_overlap = 0.0;
+    double I_x, I_y, I_z;
+
+    I_x = overlap_1D_ana_int(exp_a, exp_b, l_a[0], l_b[0], coord_a(0), coord_b(0));
+    I_y = overlap_1D_ana_int(exp_a, exp_b, l_a[1], l_b[1], coord_a(1), coord_b(1));
+    I_z = overlap_1D_ana_int(exp_a, exp_b, l_a[2], l_b[2], coord_a(2), coord_b(2));
+
+    switch (pointer){
+        case 0:
+            I_x = overlap_1D_R(exp_a, exp_b, l_a[0], l_b[0], coord_a(0), coord_b(0));
+            break;
+        case 1:
+            I_y = overlap_1D_R(exp_a, exp_b, l_a[1], l_b[1], coord_a(1), coord_b(1));
+            break;
+        case 2:
+            I_z = overlap_1D_R(exp_a, exp_b, l_a[2], l_b[2], coord_a(2), coord_b(2));
+            break;
+    }
+
+    total_overlap = I_x * I_y * I_z;
+
+    return total_overlap;
+}
+
+
+//constructs 3x1 matrix of S values for each STO3G overlap
+mat S_uv_R(STO3G A, STO3G B){
+    mat S_uv_R(3, 1);
+    double overlap = 0.0;
+
+    for(int i = 0; i < 3; i++){ //run thorugh each DOF
+        for(int j = 0; j < 3; j++){ //run through each primitive
+            for(int k = 0; k < 3; k++){
+                overlap += A.primitive[j].d * B.primitive[k].d * A.primitive[j].N * B.primitive[k].N *
+                        overlap_3D_R(A.primitive[j].exp, B.primitive[k].exp, A.L_vec, B.L_vec,
+                                              A.coord, B.coord, i);
+            }
+        }
+        S_uv_R(i, 0) = overlap;
+        overlap = 0.0;
+    }
+
+    return S_uv_R;
+}
+
+//cosntruct S_R matrix
+void S_R_matrix(mat& S_R, const Basis& basis){
+    mat rotational_inv = zeros(3, 1);
+
+    for(int i = 0; i < basis.basis.size(); i++){
+        for(int j = 0; j < basis.basis.size(); j++){
+            if(basis.atom_index[i] == basis.atom_index[j]){
+                S_R = join_rows(S_R, rotational_inv);
+            } else {
+                S_R = join_rows(S_R, S_uv_R(basis.basis[i], basis.basis[j]));
+            }
+        }
+    }
+}
 
 void V_nuc_R_matrix(mat& V_nuc_R, const vector<Atom>& molecule){
     for(int i = 0; i < molecule.size(); i++) { //run through number of atoms
@@ -458,3 +504,50 @@ void X_matrix(mat& X, const Basis& basis, const mat& P_A, const mat& P_B){
         }
     }
 }
+
+double Y_matrix_element(int atom_A, int atom_B, const mat& P_A, const mat& P_B, const vector<Atom>& molecule,
+                        const Basis& basis){
+    mat P_total = P_A + P_B;
+    vec P_atom_overlap(molecule.size());
+    density_atom_overlap(P_atom_overlap, P_total, molecule, basis);
+
+    double P_AA_total = P_atom_overlap(atom_A);
+    double P_BB_total = P_atom_overlap(atom_B);
+    double Z_A = molecule[atom_A].AOs[0].Z;
+    double Z_B = molecule[atom_B].AOs[0].Z;
+
+    double total = 0.0;
+
+    for(int i = 0; i < molecule[atom_A].AOs.size(); i++){
+        for(int j = 0; j < molecule[atom_B].AOs.size(); j++){
+            total += P_A(i, j) * P_A(i, j) + P_B(i, j) * P_B(i, j);
+        }
+    }
+
+    return (P_AA_total * P_BB_total) - (Z_B * P_AA_total) - (Z_A * P_BB_total) - total;
+}
+
+//construct Y matrix
+void Y_matrix(mat& Y, const vector<Atom>& molecule, const Basis& basis, const mat& P_A, const mat& P_B){
+    mat P = P_A + P_B;
+    vec P_atom_overlap(molecule.size());
+    density_atom_overlap(P_atom_overlap, P, molecule, basis);
+
+    for(int i = 0; i < molecule.size(); i++){
+        for(int j = 0; j < molecule.size(); j++){
+            Y(i, j) = Y_matrix_element(i, j, P_A, P_B, molecule, basis);
+        }
+    }
+}
+
+/*
+mat electron_grad_matrix(const vector<Atom>& molecule){
+    mat electron_grad(3, molecule.size());
+
+    for(int i = 0; i < 3; i++){
+        for(int j = 0; j < molecule.size(); j++){
+
+        }
+    }
+}
+*/

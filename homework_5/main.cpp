@@ -136,5 +136,17 @@ int main(int argc, char* argv[]) {
     cout << "gamma_R: " << endl;
     cout << gamma_R << endl;
 
+    mat S_R;
+    S_R_matrix(S_R, basis);
+
+    cout << "S_R: " << endl;
+    cout << S_R << endl;
+
+    mat Y(molecule.size(), molecule.size());
+    Y_matrix(Y, molecule, basis, P_A, P_B);
+
+    cout << "Y: " << endl;
+    cout << Y << endl;
+
     return 0;
 }

@@ -42,4 +42,9 @@ void X_matrix(mat& X, const Basis& basis, const mat& P_A, const mat& P_B);
 
 void gamma_R_matrix(mat& gamma_R, const vector<Atom>& molecule);
 
+void S_R_matrix(mat& S_R, const Basis& basis);
+
+void Y_matrix(mat& Y, const vector<Atom>& molecule, const Basis& basis, const mat& P_A, const mat& P_B);
+
+
 #endif //HOMEWORK_5_EVAL_H
