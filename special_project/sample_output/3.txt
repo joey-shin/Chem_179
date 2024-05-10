@@ -1,0 +1,68 @@
+number of atoms: 3
+Atom 0: 
+atomic_number: 79
+coord: 
+        0
+  -5.0000
+        0
+
+Atom 1: 
+atomic_number: 79
+coord: 
+        0
+   5.0000
+        0
+
+Atom 2: 
+atomic_number: 79
+coord: 
+  -3.6000
+        0
+        0
+
+gradient descent
+Iterations: 224
+Optimized Energy: -15.87
+Optimized Coordinates: 
+  -0.3481  -0.3481  -2.9038
+  -1.4755   1.4755        0
+        0        0        0
+
+golden_ratio_line_search
+Iterations: 18
+Optimized Energy: -15.87
+Optimized Coordinates: 
+  -0.3481  -0.3481  -2.9038
+   1.4755  -1.4755        0
+        0        0        0
+
+BFGS
+Iterations: 17
+Optimized Energy: -4.29915e-14
+Optimized Coordinates: 
+  -6.0623e+01  -6.0623e+01   1.1765e+02
+  -8.1108e+02   8.1108e+02            0
+            0            0            0
+
+optimized inverse Hessian: 
+   1.1006  -0.0698        0   0.1006   0.0698        0  -0.2011        0        0
+  -0.0698   0.3654        0  -0.0698   0.6346        0   0.1397        0        0
+        0        0   1.0000        0        0        0        0        0        0
+   0.1006  -0.0698        0   1.1006   0.0698        0  -0.2011        0        0
+   0.0698   0.6346        0   0.0698   0.3654        0  -0.1397        0        0
+        0        0        0        0        0   1.0000        0        0        0
+  -0.2011   0.1397        0  -0.2011  -0.1397        0   1.4023        0        0
+        0        0        0        0        0        0        0   1.0000        0
+        0        0        0        0        0        0        0        0   1.0000
+
+Hessian egien values: 
+  -5.6966e-27
+  -2.1295e-27
+  -6.6939e-43
+  -2.4697e-43
+   6.5615e-44
+   2.8331e-28
+   2.9298e-28
+   7.8141e-28
+   8.4199e-28
+

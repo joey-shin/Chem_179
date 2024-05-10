@@ -1,0 +1,81 @@
+number of atoms: 5
+Atom 0: 
+atomic_number: 79
+coord: 
+  -1.4460
+   1.4820
+  -2.7000
+
+Atom 1: 
+atomic_number: 79
+coord: 
+   2.6820
+  -2.3220
+   0.4200
+
+Atom 2: 
+atomic_number: 79
+coord: 
+   2.3700
+  -2.0700
+   1.3980
+
+Atom 3: 
+atomic_number: 79
+coord: 
+  -2.8620
+  -1.4040
+   0.1440
+
+Atom 4: 
+atomic_number: 79
+coord: 
+  -0.8160
+   1.6200
+  -2.0940
+
+gradient descent
+Iterations: 159
+Optimized Energy: -48.1594
+Optimized Coordinates: 
+  -1.0699   1.0389   1.0410  -1.5049   0.4230
+   0.0738  -1.5805  -1.1512  -1.1259   1.0899
+  -2.6331  -1.4130   1.5004   0.0208  -0.3071
+
+Execution time: 2 ms
+
+golden_ratio_line_search
+Iterations: 151
+Optimized Energy: -48.1594
+Optimized Coordinates: 
+  -1.0702   1.0390   1.0414  -1.5048   0.4226
+   0.0728  -1.5805  -1.1504  -1.1260   1.0901
+  -2.6333  -1.4128   1.5005   0.0211  -0.3076
+
+Execution time: 30 ms
+
+Newton_step
+Optimized Energy: -6.44897
+Optimized Energy: 27.7007
+Optimized Energy: 39.3519
+Optimized Energy: -0.0010387
+Optimized Energy: -2.55124e-05
+Iterations: 5
+Optimized Energy: -2.55124e-05
+Optimized Coordinates: 
+  -16.0473   48.7548   22.3596  -27.8239    4.8750
+    5.9319   -5.4003    7.2619    2.9071   -8.5182
+   16.4424  -11.1462   -8.7425   -9.4353  -57.1720
+
+Execution time: 0 ms
+
+BFGS
+Iterations: 1
+Optimized Energy: -3.28849e-36
+Optimized Coordinates: 
+   2.8932e+07  -1.1895e+06   1.1895e+06  -3.3573e+00  -2.8932e+07
+   6.3375e+06   9.6071e+05  -9.6072e+05  -1.9639e+00  -6.3375e+06
+   2.7830e+07   3.7285e+06  -3.7285e+06   6.1995e-01  -2.7830e+07
+
+Execution time: 0 ms
+
